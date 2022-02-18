@@ -3,41 +3,41 @@ package com.example.pm1e10265.tablas;
 import java.io.Serializable;
 
 public class Pais implements Serializable {
-    private Integer id;
-    private String nombre;
-    private Integer codigo;
+    private Integer idP;
+    private String nombrePais;
+    private Integer codigoPais;
 
     public Pais(){
 
     }
 
-    public Pais(Integer id, String nombre, Integer codigo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.codigo = codigo;
+    public Pais(Integer idP, String nombrePais, Integer codigoPais) {
+        this.idP = idP;
+        this.nombrePais = nombrePais;
+        this.codigoPais = codigoPais;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdP() {
+        return idP;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdP(Integer idP) {
+        this.idP = idP;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombrePais() {
+        return nombrePais;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombrePais(String nombrePais) {
+        this.nombrePais = nombrePais;
     }
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getCodigoPais() {
+        return codigoPais;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setCodigoPais(Integer codigoPais) {
+        this.codigoPais = codigoPais;
     }
 }

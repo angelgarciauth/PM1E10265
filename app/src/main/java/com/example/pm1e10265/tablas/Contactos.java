@@ -8,18 +8,20 @@ public class Contactos implements Serializable {
     private String nombre;
     private Integer telefono;
     private String nota;
+    private String imagePath;
     private byte[] imagen;
 
     public Contactos(){
 
     }
 
-    public Contactos(Integer id, String pais, String nombre, Integer telefono, String nota, byte[] imagen) {
+    public Contactos(Integer id, String pais, String nombre, Integer telefono, String nota,String imagePath, byte[] imagen) {
         this.id = id;
         this.pais = pais;
         this.nombre = nombre;
         this.telefono = telefono;
         this.nota = nota;
+        this.imagePath = imagePath;
         this.imagen = imagen;
     }
 
@@ -69,5 +71,13 @@ public class Contactos implements Serializable {
 
     public void setImagen(byte[] imagen) {
         this.imagen = imagen;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

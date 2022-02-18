@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124"
+        app:layout_constraintVertical_bias="0.098"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -172,5 +172,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.361" />
+
+    <Button
+        android:id="@+id/btnFoto"
+        android:layout_width="42dp"
+        android:layout_height="33dp"
+        android:backgroundTint="#2196F3"
+        android:drawableLeft="@drawable/ic_foto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.315" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

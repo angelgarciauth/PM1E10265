@@ -19,6 +19,7 @@ public class Transacciones {
     public static final String nombre = "nombre";
     public static final String telefono = "telefono";
     public static final String nota = "nota";
+    public static final String pathImage = "imagepath";
     public static final String imagen = "imagen";
 
     //Transacciones DDL (data definition languaje)
@@ -28,7 +29,7 @@ public class Transacciones {
     public static final String codigopais = "codigopais";
 
     public static final String CreateTableContactos = "CREATE TABLE "+tablacontactos + "(id INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                                                                                        "pais TEXT,nombre TEXT, telefono INTEGER, nota TEXT, imagen BLOB)";
+                                                                                        "pais TEXT,nombre TEXT, telefono INTEGER, nota TEXT, imagepath TEXT, imagen BLOB)";
 
     public static final String DropTablecontactos = "DROP TABLE IF EXISTS "+ tablacontactos;
 

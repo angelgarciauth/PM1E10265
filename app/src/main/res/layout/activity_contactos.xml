@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <EditText
-        android:id="@+id/txtBuscar"
+        android:id="@+id/txtBuscarContacto"
         android:layout_width="339dp"
         android:layout_height="41dp"
         android:drawableLeft="@drawable/ic_buscar"
@@ -35,7 +35,7 @@
 
     <ListView
         android:id="@+id/listContactos"
-        android:layout_width="338dp"
+        android:layout_width="0dp"
         android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
         app:layout_constraintVertical_bias="0.85" />
 
     <Button
-        android:id="@+id/btnEliminar"
+        android:id="@+id/btnEliminarContacto"
         android:layout_width="130dp"
         android:layout_height="42dp"
         android:backgroundTint="#E91E63"
@@ -87,7 +87,7 @@
         app:layout_constraintVertical_bias="0.947" />
 
     <Button
-        android:id="@+id/btnActualizar"
+        android:id="@+id/btnActualizarContacto"
         android:layout_width="130dp"
         android:layout_height="42dp"
         android:backgroundTint="#3F51B5"
@@ -99,4 +99,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.947" />
+
+    <EditText
+        android:id="@+id/txtIdVerContacto"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 </androidx.constraintlayout.widget.ConstraintLayout>

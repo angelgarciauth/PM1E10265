@@ -15,12 +15,13 @@ public class SQLiteConexion extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(Transacciones.CreateTablePais);
-
+        sqLiteDatabase.execSQL(Transacciones.CreateTableContactos);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL(Transacciones.DropTablePais);
+        sqLiteDatabase.execSQL(Transacciones.DropTablecontactos);
         onCreate(sqLiteDatabase);
     }
 }
