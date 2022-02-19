@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pm1e10265">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
 
     <queries>
 
@@ -36,18 +37,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PM1E10265">
         <activity
+            android:name=".ActivityUpdateContact"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityViewImage"
+            android:exported="false" />
+        <activity
             android:name=".ActivityAgregarPais"
-            android:exported="false"
-
-            />
+            android:exported="false" />
         <activity
             android:name=".ActivityContactos"
             android:exported="false"
             android:noHistory="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,14 +60,14 @@
         </activity>
 
         <provider
-             android:name="androidx.core.content.FileProvider"
-             android:authorities="${applicationId}.fileprovider"
-             android:exported="false"
-             android:grantUriPermissions="true">
-             <meta-data
-                 android:name="android.support.FILE_PROVIDER_PATHS"
-                 android:resource="@xml/provider_paths" />
-         </provider>
-     </application>
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
 
- </manifest>
+</manifest>

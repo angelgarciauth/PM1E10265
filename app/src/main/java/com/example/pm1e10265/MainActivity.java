@@ -31,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.pm1e10265.configuraciones.Funciones;
 import com.example.pm1e10265.configuraciones.SQLiteConexion;
 import com.example.pm1e10265.configuraciones.Transacciones;
 import com.example.pm1e10265.tablas.Pais;
@@ -75,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
         spPais = (Spinner) findViewById(R.id.spPais);
 
         ObjImagen = (ImageView)findViewById(R.id.imgFoto);
-
-
         recargarCombo();
 
         btnFoto.setOnClickListener(new View.OnClickListener() {
@@ -105,19 +104,13 @@ public class MainActivity extends AppCompatActivity {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String respuesta=validar();
+                String respuesta = validar();
 
                 if(!respuesta.equals("OK")){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setTitle("Mensaje Advertencia");
-                    builder.setMessage(respuesta);
-                    builder.setPositiveButton("Aceptar", null);
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-
+                    Funciones.showAlert(respuesta, MainActivity.this);
                 }else{
                     guardarContacto();
+                    limpiar();
                 }
             }
         });
@@ -188,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
                 ,Toast.LENGTH_LONG).show();
 
         db.close();
-
     }
 
     private void limpiar(){
@@ -219,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if(requestCode == PETICION_CAM){
-            if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+            if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 dispatchTakePictureIntent();
             }
         }else{
@@ -237,7 +229,6 @@ public class MainActivity extends AppCompatActivity {
             Bitmap image = BitmapFactory.decodeFile(currentPhotoPath);
 
             imgContacto = image;
-
             ObjImagen.setImageBitmap(image);
         }
     }
@@ -271,8 +262,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
     public void recargarCombo(){
         obtenerListaPais();

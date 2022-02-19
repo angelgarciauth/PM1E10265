@@ -114,16 +114,10 @@ public class ActivityAgregarPais extends AppCompatActivity {
         valores.put(Transacciones.codigopais,txtCodigoPais.getText().toString());
 
         Long resultado = db.insert(Transacciones.tablapais,Transacciones.idpais,valores);
-
         Toast.makeText(getApplicationContext(),"Registro ingresado con exito!! Codigo"+resultado.toString(), Toast.LENGTH_LONG).show();
 
         db.close();
-
         LimpiarPantalla();
-
-
-
-
     }
 
     private void LimpiarPantalla() {
@@ -132,9 +126,7 @@ public class ActivityAgregarPais extends AppCompatActivity {
     }
 
     private void Buscar() {
-
         SQLiteDatabase db = conexion.getWritableDatabase();
-        //Parametros de consulta para realizar la sentencia SELECT
 
         String [] params = { txtBuscarPais.getText().toString() };
         String [] fields = {
@@ -160,16 +152,9 @@ public class ActivityAgregarPais extends AppCompatActivity {
             }else{
                 Toast.makeText(getApplicationContext(), "Elemento no encontrado ", Toast.LENGTH_LONG).show();
             }
-
-
-
-
         } catch (Exception ex) {
-
             Log.w("ANGEL", "Buscar "+txtNPais.getText().toString(), null);
-
         }
-
     }
 
 
@@ -177,7 +162,6 @@ public class ActivityAgregarPais extends AppCompatActivity {
         boolean correc = false;
         SQLiteConexion conexion = new SQLiteConexion(this, Transacciones.NameDatabase, null,1);
         SQLiteDatabase db = conexion.getWritableDatabase();
-
         long resultado = db.delete(Transacciones.tablapais,Transacciones.idpais+"=?", new String[]{txtId.getText().toString()});
         db.close();
     }
@@ -186,18 +170,13 @@ public class ActivityAgregarPais extends AppCompatActivity {
         SQLiteConexion conexion = new SQLiteConexion(this, Transacciones.NameDatabase, null,1);
         SQLiteDatabase db = conexion.getWritableDatabase();
         ContentValues valores = new ContentValues();
-
         valores.put(Transacciones.idpais, txtId.getText().toString());
         valores.put(Transacciones.nombrepais,txtNPais.getText().toString());
         valores.put(Transacciones.codigopais,txtCodigoPais.getText().toString());
 
-
         long resultado = db.replace(Transacciones.tablapais,Transacciones.idpais,valores);
-
         Toast.makeText(getApplicationContext(),"Registro Editado con exito!! Codigo"+Long.toString(resultado), Toast.LENGTH_LONG).show();
-
         db.close();
-
     }
 
     private void volver(){
