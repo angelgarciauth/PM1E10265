@@ -142,6 +142,25 @@ public class ActivityContactos extends AppCompatActivity {
                 }
             }
         });
+
+        btnCompartir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (contact != null && contact.getNombre() != null && contact.getTelefono() != null) {
+                    String contacto = "Nombre Contacto: "+contact.getNombre()+"\nTelefono: "+contact.getTelefono().toString();
+                    Intent sendIntent = new Intent();
+                    sendIntent.setAction(Intent.ACTION_SEND);
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, contacto);
+                    sendIntent.setType("text/plain");
+
+                    Intent shareIntent = Intent.createChooser(sendIntent, "Compartir Contacto");
+                    startActivity(shareIntent);
+
+                } else {
+                    Funciones.showAlert("Debes seleccionar un contacto para poder compartilo.", ActivityContactos.this);
+                }
+            }
+        });
     }
 
     private void updateContact() {
