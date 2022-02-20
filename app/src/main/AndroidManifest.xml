@@ -40,7 +40,6 @@
         <activity
             android:name=".ActivityUpdateContact"
             android:exported="false"
-
             />
         <activity
             android:name=".ActivityViewImage"
