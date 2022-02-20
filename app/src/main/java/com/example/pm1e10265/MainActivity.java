@@ -117,6 +117,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recargarCombo();
+    }
+
     public void obtenerListaPais(){
         Pais pais = null;
         lista = new ArrayList<Pais>();
@@ -177,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
         Long result = db.insert(Transacciones.tablacontactos, Transacciones.id, values);
 
-        Toast.makeText(getApplicationContext(), "Contacto creado exitosamente " + result.toString()
+        Toast.makeText(getApplicationContext(), "Contacto creado exitosamente "
                 ,Toast.LENGTH_LONG).show();
 
         db.close();
