@@ -39,17 +39,23 @@
         android:theme="@style/Theme.PM1E10265">
         <activity
             android:name=".ActivityUpdateContact"
-            android:exported="false" />
+            android:exported="false"
+
+            />
         <activity
             android:name=".ActivityViewImage"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"
+            />
         <activity
             android:name=".ActivityAgregarPais"
-            android:exported="false" />
+            android:exported="false"
+
+            />
         <activity
             android:name=".ActivityContactos"
             android:exported="false"
-            android:noHistory="true" />
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -6,18 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ActivityContactos">
 
-    <Button
+    <ImageButton
         android:id="@+id/btnAtras"
-        android:layout_width="88dp"
-        android:layout_height="43dp"
+        android:layout_width="59dp"
+        android:layout_height="42dp"
+        android:backgroundTint="#3D56E4"
+        android:src="@drawable/ic_atras"
         android:text="Atras"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/txtBuscarContacto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <EditText
         android:id="@+id/txtBuscarContacto"
@@ -103,15 +105,4 @@ A
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.947" />
 
-    <EditText
-        android:id="@+id/txtIdVerContacto"
-        android:layout_width="218dp"
-        android:layout_height="38dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/txtBuscarContacto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnAtras"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593" />
 </androidx.constraintlayout.widget.ConstraintLayout>

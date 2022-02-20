@@ -115,8 +115,7 @@ public class ActivityUpdateContact extends AppCompatActivity {
                     if (updateContact() > 0) {
                         clean();
                         Toast.makeText(ActivityUpdateContact.this, "Contacto actualizado correctamente", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ActivityUpdateContact.this, ActivityContactos.class);
-                        startActivity(intent);
+                        finish();
                     } else {
                         Funciones.showAlert("No se pudo actualizar el contacto", ActivityUpdateContact.this);
                     }

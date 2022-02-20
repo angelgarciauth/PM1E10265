@@ -26,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -38,7 +39,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ActivityContactos extends AppCompatActivity {
-    Button btnAtras, btnCompartir, btnActualizar, btnEliminar, btnVerImagen;
+    Button  btnCompartir, btnActualizar, btnEliminar, btnVerImagen;
+    ImageButton btnAtras;
     ListView lista;
     ArrayList<Contactos> listaContactos;
     ArrayList<String> arregloContactos;
@@ -59,7 +61,7 @@ public class ActivityContactos extends AppCompatActivity {
 
         conexion = new SQLiteConexion(this, Transacciones.NameDatabase,null,1);
 
-        btnAtras = (Button) findViewById(R.id.btnAtras);
+        btnAtras = (ImageButton) findViewById(R.id.btnAtras);
         btnCompartir = (Button) findViewById(R.id.btnCompartir);
         btnActualizar = (Button) findViewById(R.id.btnActualizarContacto);
         btnEliminar = (Button) findViewById(R.id.btnEliminarContacto);
@@ -67,7 +69,7 @@ public class ActivityContactos extends AppCompatActivity {
         lista = (ListView) findViewById(R.id.listContactos);
 
         txtBuscar = (EditText)findViewById(R.id.txtBuscarContacto);
-        txtId = (EditText) findViewById(R.id.txtIdVerContacto);
+
 
         reloadListView();
 
@@ -91,8 +93,7 @@ public class ActivityContactos extends AppCompatActivity {
         btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 

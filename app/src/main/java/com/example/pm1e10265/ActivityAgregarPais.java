@@ -60,8 +60,7 @@ public class ActivityAgregarPais extends AppCompatActivity {
 
                 }else{
                     AgregarPais();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+
                 }
             }
         });
@@ -82,9 +81,8 @@ public class ActivityAgregarPais extends AppCompatActivity {
                         .setPositiveButton("SI", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
                                 eliminarPais();
-                                volver();
+                                LimpiarPantalla();
                             }
                         })
                         .setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -100,7 +98,7 @@ public class ActivityAgregarPais extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EditarPais();
-                volver();
+                LimpiarPantalla();
             }
         });
 
@@ -114,7 +112,7 @@ public class ActivityAgregarPais extends AppCompatActivity {
         valores.put(Transacciones.codigopais,txtCodigoPais.getText().toString());
 
         Long resultado = db.insert(Transacciones.tablapais,Transacciones.idpais,valores);
-        Toast.makeText(getApplicationContext(),"Registro ingresado con exito!! Codigo"+resultado.toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Registro ingresado con exito!! Codigo", Toast.LENGTH_LONG).show();
 
         db.close();
         LimpiarPantalla();
@@ -175,14 +173,11 @@ public class ActivityAgregarPais extends AppCompatActivity {
         valores.put(Transacciones.codigopais,txtCodigoPais.getText().toString());
 
         long resultado = db.replace(Transacciones.tablapais,Transacciones.idpais,valores);
-        Toast.makeText(getApplicationContext(),"Registro Editado con exito!! Codigo"+Long.toString(resultado), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Registro Editado con exito", Toast.LENGTH_LONG).show();
         db.close();
     }
 
-    private void volver(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+
 
     private String validar() {
         String respuesta = "OK";
