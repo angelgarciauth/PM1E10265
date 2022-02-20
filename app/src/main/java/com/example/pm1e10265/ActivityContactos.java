@@ -179,7 +179,6 @@ public class ActivityContactos extends AppCompatActivity {
             public void onClick(View view) {
                 if (contact != null && contact.getId() != null) {
                     updateContact();
-                    Toast.makeText(ActivityContactos.this, "EJECTANDOSE AL VOLVER 1", Toast.LENGTH_SHORT).show();
                 } else {
                     Funciones.showAlert("Debes seleccionar un contacto para poder actualizarlo.", ActivityContactos.this);
                 }
