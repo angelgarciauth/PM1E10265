@@ -99,8 +99,8 @@ public class ActivityContactos extends AppCompatActivity {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                contact = listaContactos.get(i);
+            public void onItemClick(AdapterView<?> adapterView, View view, int fila, long l) {
+                contact = listaContactos.get(fila);
                 contador++;
 
                 Handler handler = new Handler();
@@ -209,6 +209,8 @@ public class ActivityContactos extends AppCompatActivity {
         String[] code = contact.getPais().split("\\(");
         String codePais = "tel:+"+code[1].substring(0,3);
         String numero = codePais+""+contact.getTelefono().toString();
+
+        Toast.makeText(this, "Numero: "+contact.getTelefono().toString(), Toast.LENGTH_SHORT).show();
 
         if (ContextCompat.checkSelfPermission(ActivityContactos.this, Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {

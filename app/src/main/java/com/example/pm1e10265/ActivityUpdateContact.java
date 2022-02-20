@@ -135,7 +135,7 @@ public class ActivityUpdateContact extends AppCompatActivity {
         values.put(Transacciones.telefono, txtTelefono.getText().toString());
         values.put(Transacciones.nota, txtNota.getText().toString());
         values.put(Transacciones.pathImage, currentPhotoPath);
-        values.put(Transacciones.pathImage, currentPhotoPath);
+        values.put(Transacciones.pais, spPais.getSelectedItem().toString());
 
         ByteArrayOutputStream bay = new ByteArrayOutputStream(10480);
         imgContacto.compress(Bitmap.CompressFormat.JPEG, 0 , bay);
