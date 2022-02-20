@@ -1,15 +1,26 @@
 package com.example.pm1e10265;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +35,7 @@ import com.example.pm1e10265.configuraciones.Transacciones;
 import com.example.pm1e10265.tablas.Contactos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ActivityContactos extends AppCompatActivity {
     Button btnAtras, btnCompartir, btnActualizar, btnEliminar, btnVerImagen;
@@ -36,12 +48,16 @@ public class ActivityContactos extends AppCompatActivity {
 
     Contactos contact = new Contactos();
 
+    // DOBLE CLICK
+    int contador = 0;
+    private static final int REQUEST_CALL = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactos);
 
-        conexion= new SQLiteConexion(this, Transacciones.NameDatabase,null,1);
+        conexion = new SQLiteConexion(this, Transacciones.NameDatabase,null,1);
 
         btnAtras = (Button) findViewById(R.id.btnAtras);
         btnCompartir = (Button) findViewById(R.id.btnCompartir);
@@ -72,7 +88,6 @@ public class ActivityContactos extends AppCompatActivity {
             }
         });
 
-
         btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,11 +97,38 @@ public class ActivityContactos extends AppCompatActivity {
         });
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 contact = listaContactos.get(i);
+                contador++;
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(contador == 2) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ActivityContactos.this);
+                            builder.setMessage("¿Desea llamar a " +contact.getNombre())
+                                    .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            llamar();
+                                        }
+                                    })
+                                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                        }
+                                    }).show();
+                        }
+                        contador = 0;
+                    }
+                }, 500);
             }
+
         });
+
 
         // EVENTOS BOTONES
         btnVerImagen.setOnClickListener(new View.OnClickListener() {
@@ -163,6 +205,34 @@ public class ActivityContactos extends AppCompatActivity {
         });
     }
 
+    private void llamar() {
+        String[] code = contact.getPais().split("\\(");
+        String codePais = "tel:+"+code[1].substring(0,3);
+        String numero = codePais+""+contact.getTelefono().toString();
+
+        if (ContextCompat.checkSelfPermission(ActivityContactos.this, Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ActivityContactos.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+        } else {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse(numero));
+            startActivity(callIntent);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CALL) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                llamar();
+            } else {
+                Toast.makeText(this, "Permisos Denegado", Toast.LENGTH_LONG).show();
+            }
+        }
+
+    }
+
     private void updateContact() {
         Bundle bundle = new Bundle();
         bundle.putSerializable("img", contact);
@@ -220,7 +290,7 @@ public class ActivityContactos extends AppCompatActivity {
 
     public void reloadListView() {
         ObtenerListaContactos();
-        adp = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arregloContactos);
+        adp = new ArrayAdapter(this, android.R.layout.simple_list_item_activated_1, arregloContactos);
         lista.setAdapter(adp);
     }
 
