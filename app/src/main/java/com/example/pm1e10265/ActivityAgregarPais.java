@@ -112,7 +112,7 @@ public class ActivityAgregarPais extends AppCompatActivity {
         valores.put(Transacciones.codigopais,txtCodigoPais.getText().toString());
 
         Long resultado = db.insert(Transacciones.tablapais,Transacciones.idpais,valores);
-        Toast.makeText(getApplicationContext(),"Registro ingresado con exito!! Codigo"+resultado.toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Registro ingresado con exito!! Codigo", Toast.LENGTH_LONG).show();
 
         db.close();
         LimpiarPantalla();
